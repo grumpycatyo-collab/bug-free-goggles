@@ -33,7 +33,7 @@ func GetProjects() ([]models.Project, error) {
 
 	err := json.Unmarshal([]byte(string(body)), &projectsJSON)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	for _, project := range projectsJSON {
@@ -66,7 +66,7 @@ func GetUsers() ([]models.User, error) {
 
 	err := json.Unmarshal([]byte(string(body)), &usersJSON)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	for _, project := range usersJSON {

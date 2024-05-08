@@ -4,8 +4,15 @@ import (
 	"fmt"
 	"github.com/grumpycatyo-collab/bug-free-goggles/core"
 	"github.com/grumpycatyo-collab/bug-free-goggles/models"
+	"sync"
 	"time"
 )
+
+type CachedItems struct {
+	lock     sync.RWMutex
+	Projects []models.Project
+	Users    []models.User
+}
 
 func main() {
 
