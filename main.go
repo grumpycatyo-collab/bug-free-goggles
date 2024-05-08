@@ -12,6 +12,7 @@ var users []models.User
 func main() {
 	projects, _ = core.GetProjects()
 	fmt.Printf("%v", projects)
+
 	users, _ = core.GetUsers()
 	fmt.Printf("\n%v", users)
 

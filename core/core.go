@@ -2,7 +2,9 @@ package core
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/grumpycatyo-collab/bug-free-goggles/models"
+	"golang.org/x/time/rate"
 
 	//"github.com/grumpycatyo-collab/bug-free-goggles/models"
 	"io"
@@ -11,7 +13,11 @@ import (
 
 func GetProjects() ([]models.Project, error) {
 	url := "https://app.asana.com/api/1.0/projects?workspace=1207269339457439"
-
+	// A very primitive limiter
+	limiter := rate.NewLimiter(15, 2)
+	if !limiter.Allow() {
+		return nil, errors.New("the API is at capacity, try again later")
+	}
 	req, _ := http.NewRequest("GET", url, nil)
 
 	req.Header.Add("accept", "application/json")
@@ -39,6 +45,11 @@ func GetProjects() ([]models.Project, error) {
 
 func GetUsers() ([]models.User, error) {
 	url := "https://app.asana.com/api/1.0/users?workspace=1207269339457439"
+
+	limiter := rate.NewLimiter(15, 2)
+	if !limiter.Allow() {
+		return nil, errors.New("the API is at capacity, try again later")
+	}
 
 	req, _ := http.NewRequest("GET", url, nil)
 
