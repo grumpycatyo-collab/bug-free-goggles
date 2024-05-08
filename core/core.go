@@ -2,7 +2,6 @@ package core
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/grumpycatyo-collab/bug-free-goggles/models"
 
 	//"github.com/grumpycatyo-collab/bug-free-goggles/models"
@@ -10,7 +9,7 @@ import (
 	"net/http"
 )
 
-func GetProjects() error {
+func GetProjects() ([]models.Project, error) {
 	url := "https://app.asana.com/api/1.0/projects?workspace=1207269339457439"
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -23,18 +22,22 @@ func GetProjects() error {
 	defer res.Body.Close()
 	body, _ := io.ReadAll(res.Body)
 
-	pingJSON := make(map[string][]models.User)
+	var projects []models.Project
+	projectsJSON := make(map[string][]models.Project)
 
-	err := json.Unmarshal([]byte(string(body)), &pingJSON)
+	err := json.Unmarshal([]byte(string(body)), &projectsJSON)
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("\n\n %v", pingJSON)
-	return nil
+	for _, project := range projectsJSON {
+		projects = append(projects, project...)
+	}
+
+	return projects, nil
 }
 
-func GetUsers() error {
+func GetUsers() ([]models.User, error) {
 	url := "https://app.asana.com/api/1.0/users?workspace=1207269339457439"
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -47,15 +50,17 @@ func GetUsers() error {
 	defer res.Body.Close()
 	body, _ := io.ReadAll(res.Body)
 
-	pingJSON := make(map[string][]models.User)
+	var users []models.User
+	usersJSON := make(map[string][]models.User)
 
-	err := json.Unmarshal([]byte(string(body)), &pingJSON)
+	err := json.Unmarshal([]byte(string(body)), &usersJSON)
 	if err != nil {
 		panic(err)
 	}
 
-	for _, val := range pingJSON {
-		fmt.Println(val)
+	for _, project := range usersJSON {
+		users = append(users, project...)
 	}
-	return nil
+
+	return users, nil
 }
