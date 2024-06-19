@@ -107,3 +107,31 @@ make test
 1. Implemented caching for high load tolerance.
 2. Graceful shutdown and better error handling (panics) for better service managing.
 3. Better tests and benchmarking
+
+
+## What I would've done if I had more time
+1. Implemented caching for high load tolerance.
+2. Graceful shutdown and better error handling (panics) for better service managing.
+3. Better tests and benchmarking
+## What I would've done if I had more time
+1. Implemented caching for high load tolerance.
+2. Graceful shutdown and better error handling (panics) for better service managing.
+3. Better tests and benchmarking
+4. ## What I would've done if I had more time
+1. Implemented caching for high load tolerance.
+2. Graceful shutdown and better error handling (panics) for better service managing.
+3. Better tests and benchmarking
+
+
+## What I would've done if I had more time
+1. Implemented caching for high load tolerance.
+2. Graceful shutdown and better error handling (panics) for better service managing.
+3. Better tests and benchmarking
+## What I would've done if I had more time
+1. Implemented caching for high load tolerance.
+2. Graceful shutdown and better error handling (panics) for better service managing.
+3. Better tests and benchmarking
+4. ## What I would've done if I had more time
+1. Implemented caching for high load tolerance.
+2. Graceful shutdown and better error handling (panics) for better service managing.
+3. Better tests and benchmarking
